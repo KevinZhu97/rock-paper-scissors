@@ -1,1 +1,49 @@
-# rock-paper-scissors
+<script>
+var choices = [
+	'Rock', 
+	'Paper',
+	'Scissors'
+];
+
+function computerPlay() {
+	return choices[Math.floor(Math.random() * choices.length)].toLowerCase();
+}
+
+var computerScore = 0;
+var playerScore = 0;
+
+function playRound(computerSelection, playerSelection) {
+	console.log(computerSelection);
+	if (computerSelection === playerSelection) {
+		console.log(`It's a tie, you both played ${computerSelection}.`);		
+	} else if (computerSelection === 'rock' && playerSelection === 'paper') {
+		console.log("Computer loses. Player wins.");
+		playerScore += 1;
+	} else if (computerSelection === 'rock' && playerSelection === 'scissors') {
+		console.log("Computer wins. Player loses.");
+		computerScore += 1;
+	} else if (computerSelection === 'paper' && playerSelection === 'rock') {
+		console.log("Computer wins. Player loses.");
+		computerScore += 1;
+	} else if (computerSelection === 'paper' && playerSelection === 'scissors') {
+		console.log("Computer loses. Player Wins.");
+		playerScore += 1;
+	} else if (computerSelection === 'scissors' && playerSelection === 'rock') {
+		console.log("Computer loses. Player wins.");
+		playerScore += 1;
+	} else if (computerSelection === 'scissors' && playerSelection === 'paper') {
+		console.log("Computer wins! Player loses.");
+		computerScore += 1;
+	}
+}
+
+function game() {
+	for (let i = 0; i < 5; i++) {
+	var userChoice = prompt("Choose your weapon: Rock, Paper, or Scissors!").toLowerCase();
+	playRound(computerPlay(), userChoice);
+	console.log(`Computer Score: ${computerScore} Player Score: ${playerScore}`);
+	}
+}
+
+game();
+</script>
